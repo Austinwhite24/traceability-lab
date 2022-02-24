@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 
 const app = express()
-app.use(express.json())
+// app.use(express.json())
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))
@@ -21,15 +21,36 @@ var rollbar = new Rollbar({
 rollbar.log('Hello traceability')
 
 
-// 
+let students = []
 
-try {
-    noFunction ()
-} catch (error) {
-    console.error(error)
-}
+app.post('/api/student', (req, res)=>{
+    let {name} = req.body
+    name = name.trim()
+
+    students.push(name)
+
+    rollbar.log('student was added succesfully', {author: 'Austin'})
+
+    res.status(200).send(students)
+})
 
 app.use(rollbar.errorHandler())
+
+
+
+// try {
+//     noFunction ()
+// } catch (error) {
+//     console.error(error)
+// }
+
+// app.get('/api/error', (req,res) => {
+    
+// })
+
+
+
+
 
 
 const port = process.env.PORT || 4545
