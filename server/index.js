@@ -21,6 +21,15 @@ var rollbar = new Rollbar({
 rollbar.log('Hello traceability')
 
 
+// 
+
+try {
+    noFunction ()
+} catch (error) {
+    console.error(error)
+}
+
+
 const port = process.env.PORT || 4545
 
 app.listen(port, () => console.log(`Take us to warp ${port}`))
