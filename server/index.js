@@ -29,6 +29,8 @@ try {
     console.error(error)
 }
 
+app.use(rollbar.errorHandler())
+
 
 const port = process.env.PORT || 4545
 
