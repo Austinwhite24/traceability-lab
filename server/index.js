@@ -18,7 +18,7 @@ var rollbar = new Rollbar({
 })
 
 // record a generic message and send it to Rollbar
-rollbar.log('Hello world!')
+rollbar.log('Hello traceability')
 
 
 const port = process.env.PORT || 4545
