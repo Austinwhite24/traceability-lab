@@ -9,6 +9,18 @@ app.get('/', (req, res) => {
 })
 
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '159caf90e7c5407898217a6d9f87f5a9',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
+
 const port = process.env.PORT || 4545
 
 app.listen(port, () => console.log(`Take us to warp ${port}`))
